@@ -3,17 +3,49 @@
 {
 	"name": "Python 3",
 	"image": "mcr.microsoft.com/devcontainers/python:3.9",
+	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/poetry:1": {}
 	},
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "poetry install"
+	"postCreateCommand": "poetry install",
 	// Configure tool-specific properties.
-	// "customizations": {},
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"workbench.iconTheme": "vscode-icons",
+				"python.linting.flake8Enabled": true,
+				"vsicons.dontShowNewVersionMessage": true,
+				"editor.rulers": [
+					88
+				],
+				"[python]": {
+					"editor.tabSize": 4,
+					"editor.defaultFormatter": "ms-python.black-formatter",
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": true
+					}
+				},
+				"editor.formatOnSave": true,
+				"python.linting.mypyEnabled": true,
+				"python.linting.pylintEnabled": true,
+				"python.formatting.provider": "black"
+			},
+			"extensions": [
+				"ms-python.black-formatter",
+				"ms-python.isort",
+				"ms-python.python",
+				"2gua.rainbow-brackets",
+				"be5invis.toml",
+				"vscode-icons-team.vscode-icons",
+				"MS-CEINTL.vscode-language-pack-fr"
+			]
+		}
+	}
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
